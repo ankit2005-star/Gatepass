@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gate Pass Management System</title>
+</head>
+<body>
+    <h1>Gate Pass Management System</h1>
+    <form action="{{ url_for('submit') }}" method="POST">
+        <label for="name">Visitor Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="date">Date of Visit:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="reason">Reason for Visit:</label>
+        <input type="text" id="reason" name="reason" required><br><br>
+
+        <label for="entryTime">Entry Time:</label>
+        <input type="time" id="entryTime" name="entryTime" required><br><br>
+
+        <label for="exitTime">Exit Time:</label>
+        <input type="time" id="exitTime" name="exitTime"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
